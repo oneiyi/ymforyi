@@ -26,8 +26,8 @@ public class HospitalTesk {
     @Resource
     IHospitalService hospitalService;
 
-    // @Scheduled(cron = "0 0/2 * * * ? ")
-    private void test1() {
+    @Scheduled(cron = "0 0/2 * * * ? ")
+    private void task01() {
         log.info("定时任务启动：---------------- 当前时间:{}", DateUtil.now());
         List<Hospital> hospitals = crawlUtil.getList();
         AtomicReference<Integer> count = new AtomicReference<>(0);

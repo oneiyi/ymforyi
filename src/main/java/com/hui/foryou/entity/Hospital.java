@@ -12,9 +12,6 @@ import java.io.Serializable;
  * <p>
  *
  * </p>
- *
- * @author xxx
- * @since 2021-06-03
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
