@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+
+    <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/hospital.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/hospital-%d{yyyy-MM-dd}.%i.log
+            </fileNamePattern>
+            <maxFileSize>5MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+            <totalSizeCap>20GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%date{yyyy-MM-dd HH:mm:ss}] [ %-5level] [%X{requestId}] %logger{96} [%line] - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!--<logger name="com.hui.foryou.mapper" level="DEBUG"/>-->
+    <root level="INFO">
+        <appender-ref ref="ROLLING"/>
+    </root>
+</configuration>
