@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 12345
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1/ymforyou?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
-    username: rainbow
+    url: jdbc:mysql://rm-2vc8716230t2bxcuwdo.mysql.cn-chengdu.rds.aliyuncs.com/ymforyou?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: foryou
     password: Wohui8013
 mybatis-plus:
   global-config:
@@ -14,3 +14,17 @@ mybatis-plus:
 logging:
   level:
     root: info
+
+xxl:
+  job:
+    enable: false
+    admin:
+      address: http://http://121.196.212.89:9999
+    accessToken:
+    executor:
+      appname: ${spring.application.name}
+      address:
+      ip:
+      port: 9999
+      logpath: logs
+      logretentiondays: 30

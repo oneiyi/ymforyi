@@ -6,9 +6,10 @@ import com.hui.foryou.entity.Hospital;
 import com.hui.foryou.service.IHospitalService;
 import com.hui.foryou.utils.CrawlUtil;
 import com.hui.foryou.utils.PushUtil;
+import com.xxl.job.core.handler.IJobHandler;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -16,7 +17,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 @Configuration
 @Slf4j
-public class HospitalTesk {
+public class HospitalTesk extends IJobHandler {
     @Resource
     CrawlUtil crawlUtil;
 
@@ -26,8 +27,9 @@ public class HospitalTesk {
     @Resource
     IHospitalService hospitalService;
 
-    @Scheduled(cron = "0 0/2 * * * ? ")
-    private void task01() {
+    @XxlJob(value = "hospitalTask")
+    @Override
+    public void execute() throws Exception {
         log.info("定时任务启动：---------------- 当前时间:{}", DateUtil.now());
         List<Hospital> hospitals = crawlUtil.getList();
         AtomicReference<Integer> count = new AtomicReference<>(0);
