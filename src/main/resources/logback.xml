@@ -4,9 +4,9 @@
     <springProperty scope="context" name="springAppName" source="spring.application.name"/>
 
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>logs/hospital.log</file>
+        <file>logs/foryou.log</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logs/hospital-%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>logs/foryou-%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <maxFileSize>5MB</maxFileSize>
             <maxHistory>30</maxHistory>
