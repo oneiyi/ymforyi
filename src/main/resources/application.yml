@@ -14,3 +14,17 @@ mybatis-plus:
 logging:
   level:
     root: info
+
+xxl:
+  job:
+    enable: false
+    admin:
+      address: http://http://121.196.212.89:9999
+    accessToken:
+    executor:
+      appname: ${spring.application.name}
+      address:
+      ip:
+      port: 9999
+      logpath: logs
+      logretentiondays: 30

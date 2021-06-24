@@ -4,6 +4,8 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import com.hui.foryou.utils.PushUtil;
+import com.xxl.job.core.handler.IJobHandler;
+import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +13,14 @@ import javax.annotation.Resource;
 
 @Configuration
 @Slf4j
-public class RedMiBookJob {
+public class RedMiBookJob extends IJobHandler {
 
     @Resource
     PushUtil pushUtil;
 
-    private void task() {
+    @XxlJob(value = "redmiTask")
+    @Override
+    public void execute() throws Exception {
         log.info("执行获取最新货源开始............");
         String currentTime = String.valueOf(System.currentTimeMillis()).substring(0, 10);
         String getUrl = "https://api2.order.mi.com/product/delivery?goods_ids=2212000071&item_ids=&province_id=24&city_id=272&district_id=2542&area=2542001&t=" + currentTime;
